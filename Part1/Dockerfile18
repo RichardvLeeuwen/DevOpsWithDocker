@@ -1,0 +1,11 @@
+FROM ubuntu:20.04
+
+WORKDIR /usur/src/app
+
+COPY eight.sh .
+
+RUN chmod +x eight.sh
+RUN apt-get update
+RUN apt-get -y install curl
+
+CMD ./eight.sh
