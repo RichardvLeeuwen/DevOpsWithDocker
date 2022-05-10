@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+
+    twentyOne:
+      image: devopsdockeruh/simple-web-service
+      build: .
+      volumes:
+        - ./txt.log:/usr/src/app/text.log
+      container_name: twentyOne

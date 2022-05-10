@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+    postgres:
+      image: postgres:13.2-alpine
+      restart: unless-stopped
+      volumes:
+        - ./database:/var/lib/postgresql/data
+      environment:
+        POSTGRES_PASSWORD: postgres
+    redisservice:
+      image: redis
+      container_name: redisservice
+    backend:
+      image: backend
+      build: .
+      container_name: backend29
+      ports:
+        - 8080:8080
+      environment:
+        - PORT=8080
+        - REQUEST_ORIGIN=http://localhost:5000
+        - REDIS_HOST=redisservice
+        - POSTGRES_HOST=postgres
+    frontend:
+      image: frontend
+      build: .
+      container_name: frontend29
+      ports:
+        - 5000:5000

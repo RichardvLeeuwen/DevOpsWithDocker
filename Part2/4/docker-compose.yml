@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+    redisservice:
+      image: redis
+      build: .
+      container_name: redisservice
+    backend:
+      image: backend
+      build: .
+      container_name: backend24
+      ports:
+        - 8080:8080
+      environment:
+        - PORT=8080
+        - REQUEST_ORIGIN=http://localhost:5000
+        - REDIS_HOST=redisservice
+    frontend:
+      image: frontend
+      build: .
+      container_name: frontend24
+      ports:
+        - 5000:5000
