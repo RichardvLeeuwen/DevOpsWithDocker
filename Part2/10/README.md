@@ -1,0 +1,1 @@
+I had to change the request origin from http://localhost:5000 to http://localhost in the docker-compose file for the backend environment variable to pass  the cors check. Otherwise a 403 error would occur when making the request when inspecting the network logs.
