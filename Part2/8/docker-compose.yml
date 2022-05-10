@@ -18,7 +18,7 @@ services:
     backend:
       image: backend
       build: .
-      container_name: backend26
+      container_name: backend28
       ports:
         - 8080:8080
       environment:
@@ -29,6 +29,6 @@ services:
     frontend:
       image: frontend
       build: .
-      container_name: frontend26
+      container_name: frontend28
       ports:
         - 5000:5000
