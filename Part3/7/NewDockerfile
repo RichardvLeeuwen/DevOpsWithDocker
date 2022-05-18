@@ -1,0 +1,14 @@
+FROM alpine
+
+WORKDIR /usr/src/app
+
+COPY hello.c .
+
+RUN apk add --no-cache build-base &&\
+gcc hello.c -o hello &&\
+apk del build-base &&\
+rm hello.c &&\
+adduser -D reguser
+
+USER reguser
+CMD ./hello
